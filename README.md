@@ -47,7 +47,7 @@ requirements for your cache simulator:\
 You have to name your cache simulator C code **first**. Your program should support the following usage interface:\
 ./first\<cache size\>\<block size\>\<cache policy\>\<associativity\>\<prefetch size\>\<trace file\>
 
-where:\
+where:
 <ol type="A">
 <li>&ltcache size&gtis the total size of the cache in bytes. This number should be a power of 2.</li>
 <li>&ltblock size&gtis a power of 2 integer that specifies the size of the cache block in bytes.</li>
@@ -98,7 +98,7 @@ with-prefetch\
 Memory reads: 3521\
 Memory writes: 2861\
 Cache hits: 8124\
-Cache misses: 1876\
+Cache misses: 1876
 
 In this example, we are simulating a 2-way set associate cache of size 32 bytes. Each cache
 block is 4 bytes. The prefetch size is 1, meaning that we prefetch only one adjacent block.
@@ -144,7 +144,7 @@ write miss. In this assignment, the assumption is that the block is first read f
 contain any information on data values transferred between the memory and the caches.</li>
 <li>You have to compile your program with the following flags:
 -Wall -Werror -fsanitize=address</li>
-<li>You should include a makefile in you submission.</li>
+<li>You should include a makefile in you submission.</li></ol>
 
 ### 9 Extra credit (25 points)
 As an extra credit, you should implement LRU (Least Recently Used) cache policy. Your
