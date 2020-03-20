@@ -36,26 +36,31 @@ R 0xbf8ef498\
 You will implement a cache simulator to evaluate different configurations of caches. Your
 program should be able to support traces with any number of lines. The followings are the
 requirements for your cache simulator:\
-• You simulate one level cache.\
-• The cache size, associativity, the replacement policy, and the block size are the input parameters. Cache size and block size are specified in bytes.\
-• Replacement algorithm: First In First Out (FIFO).\
-• You have to simulate a write through cache.
-
+<ul>
+  <li>You simulate one level cache.</li>
+  <li>The cache size, associativity, the replacement policy, and the block size are the input parameters. Cache size and block size are specified in bytes.</li>
+  <li>Replacement algorithm: First In First Out (FIFO).</li>
+  <li>You have to simulate a write through cache.</li>
+</ul>
 
 ### 4 Cache Simulator Interface
-You have to name your cache simulator C code **first**. Your program should support the following usage interface: ./first <cache size><block size><cache policy><associativity><prefetch size><trace file>
-  
+You have to name your cache simulator C code **first**. Your program should support the following usage interface:\
+./first\<cache size\>\<block size\>\<cache policy\>\<associativity\>\<prefetch size\>\<trace file\>
+
 where:\
-A) <cache size>is the total size of the cache in bytes. This number should be a power of 2.\
-B) <block size>is a power of 2 integer that specifies the size of the cache block in bytes.\
-C) <cache policy>Here is valid cache policy is fifo and lru if you do the extra credit.\
-D) <associativity>is one of:\
-**direct** - simulate a direct mapped cache.\
-**assoc** - simulate a fully associative cache.\
-**assoc:n** - simulate an n way associative cache. n will be a power of 2.\
-E) <prefetch size>is the number of ajacent blocks that should be prefetched by the prefetcher
-in case of a miss.\
-F) <trace file>is the name of the input trace file.\
+<ol type="A">
+<li>&ltcache size&gtis the total size of the cache in bytes. This number should be a power of 2.</li>
+<li>&ltblock size&gtis a power of 2 integer that specifies the size of the cache block in bytes.</li>
+<li>&ltcache policy&gtHere is valid cache policy is fifo and lru if you do the extra credit.</li>
+<li>&ltassociativity&gtis one of:
+<ul><li>direct - simulate a direct mapped cache.</li>
+<li>assoc - simulate a fully associative cache.</li>
+  <li>assoc:n - simulate an n way associative cache. n will be a power of 2.</li></ul>
+  </li>
+<li>&ltprefetch size&gtis the number of ajacent blocks that should be prefetched by the prefetcher
+in case of a miss.</li>
+<li>&lttrace file&gtis the name of the input trace file.</li>
+  </ol>
 NOTE: Your program should check if all the inputs are in valid format, and the trace file
 exist. if not print error and then silently terminate the program.
 
@@ -124,25 +129,22 @@ FIFO which we evicted A)
 
 
 ### 8 Other Details
-1.
-  (a) When your program starts, there is nothing in the cache. So, all cache lines are empty
-(invalid).\
-  (b) you can assume that the memory size is 2pow48 . Therefore, memory addresses are 48
-bit (zero extend the addresses in the trace file if theyre less than 48-bit in length).\
-  (c) the number of bits in the tag, cache address, and byte address are determined by the
-cache size and the block size.
-
-2. For a write-through cache, there is the question of what should happen in case of a
+<ol type="A"><li>
+<ol><li>When your program starts, there is nothing in the cache. So, all cache lines are empty
+  (invalid).</li>
+  <li>You can assume that the memory size is 2pow48 . Therefore, memory addresses are 48
+bit (zero extend the addresses in the trace file if theyre less than 48-bit in length).</li>
+  <li>The number of bits in the tag, cache address, and byte address are determined by the
+  cache size and the block size.</li></ol>
+  </li>
+<li>For a write-through cache, there is the question of what should happen in case of a
 write miss. In this assignment, the assumption is that the block is first read from memory
-(one read memory), and then followed by a memory write.
-
-3. You do not need to simulate the memory in this assignment. Because, the traces doesnt
-contain any information on data values transferred between the memory and the caches.
-
-4. You have to compile your program with the following flags:\
--Wall -Werror -fsanitize=address
-
-5. You should include a makefile in you submission.
+(one read memory), and then followed by a memory write.</li>
+<li>You do not need to simulate the memory in this assignment. Because, the traces doesnt
+contain any information on data values transferred between the memory and the caches.</li>
+<li>You have to compile your program with the following flags:
+-Wall -Werror -fsanitize=address</li>
+<li>You should include a makefile in you submission.</li>
 
 ### 9 Extra credit (25 points)
 As an extra credit, you should implement LRU (Least Recently Used) cache policy. Your
@@ -165,13 +167,13 @@ $tar xvf pa4.tar
 
 This is how the folder structure should be.\
 • pa4\
-  – first\
-    ∗ first.c\
-    ∗ first.h\
-    ∗ Makefile
+        – first\
+                ∗ first.c\
+                ∗ first.h\
+                ∗ Makefile
     
 **Source code**: all source code files necessary for building your programs. e.g. first.c and first.h.\
 **Makefile**: There should be at least three rules in your Makefile:\
-  **all**: make a complete build of your program (first).\
-  **first**: build the executables (first).\
-  **clean**: prepare for rebuilding from scratch.
+        **all**: make a complete build of your program (first).\
+        **first**: build the executables (first).\
+        **clean**: prepare for rebuilding from scratch.
